@@ -8,12 +8,14 @@ function createCard (events){
                           <p class="card-text"> ${events.description}}</p>
                           <div class=" d-flex justify-content-between align-items-center bg-body-secondary">
                             <p class="mb-0">$${events.price}</p>
-                            <a href="../pages/details.html" class="btn btn-primary">Details</a>
+                            <a href="./Assets/pages/details.html" class="btn btn-primary">Details</a>
                           </div>  
                       </div>
                   </div>
             </div>`            
 }
+console.log(data.events)
+
 function printCard (data,contain){
     let frontcard=""
 for (let i = 0; i < data.events.length; i++) {    

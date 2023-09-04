@@ -12,10 +12,7 @@ main{
 .main-details{
   min-height: 83vh;
 }
-.alto-c{
-    height: 200px;
 
-}
 .img-c{
   height: 35vh;
   object-fit:cover;

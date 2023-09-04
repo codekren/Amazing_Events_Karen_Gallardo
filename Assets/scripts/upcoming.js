@@ -17,11 +17,10 @@ function createCard (events){
 function printCard (up,contain){
     let frontcard=""
 for (let i = 0; i < up.length; i++) {    
-   frontard+=createCard (up[i])   
+   frontcard+=createCard (up[i])   
 }
 contain.innerHTML=frontcard
 }
-
 printCard(filter(data),contCards)
 
 function filter (data){
@@ -29,6 +28,7 @@ function filter (data){
         return up 
 }
 console.log(filter(data))
+
 
 
 
