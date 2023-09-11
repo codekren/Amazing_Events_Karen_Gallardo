@@ -84,7 +84,7 @@ function filtradoSearch (data,$search) {
         return selecSearch
     }else { $contCards.innerHTML= `<div class= "d-flex justify-content-center mt-5"> 
     <h5  class=" text-center" > Please, try other option</h5>
-    </div> ` }         
+    </div> `}         
 } 
 function filtrosCruzados(data,$search){
     const arrayFiltradosChecked=filtradoCheck(data)
