@@ -15,9 +15,7 @@ main{
 footer{
   min-height: 10vh;
 }
-.main-details{
-  min-height: 75vh;
-}
+
 
 .img-c{
   height: 35vh;
@@ -50,7 +48,7 @@ footer{
   min-height: 100%;
 }
 .card-details{
-  height: 300px;
+  height: 200px;
 }
 .imgfooter{
   height: 5vh;

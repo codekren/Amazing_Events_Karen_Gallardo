@@ -1,14 +1,19 @@
+console.log([window])
+
 let parametro=location.search
 
-let params= new URLSearchParams (parametro)
 
-let idEvents =params.get("parametro")
+let params= new URLSearchParams (parametro) //acceder al metodo URL
+console.log(params)
+
+let idEvents =params.get("parametro") //retorna el primer valor asociado al parámetro espceficado
 
 let evento= data.events.find( detalle=> detalle._id===idEvents)
+console.log(evento)
 
 let cardDetails=document.getElementById("contDetails")
 
-function crearCardDetail(cardDetails,eventos ){
+function crearCardDetail(cardDetails,eventos){
     cardDetails.innerHTML +=`
     <div class="row d-flex justify-content-center ">
         <div class="col-md-6 d-flex align-items-center border border-success p-2 border-opacity-50 ">
