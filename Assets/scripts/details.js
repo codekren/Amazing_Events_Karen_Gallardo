@@ -1,4 +1,15 @@
-console.log([window])
+const URL_API= 'https://mindhub-xj03.onrender.com/api/amazing'
+
+
+fetch(URL_API)
+.then(response=> response.json())
+.then (data => {past=data.events.filter(evento=>evento.date<data.currentDate)
+checkCategoria= [...new Set (data.events.map(evento=>evento.category))]      
+printCard(past,$contCards)
+printCategory(checkCategoria,$contCategoria) 
+})
+
+.catch(err => console.log(err))
 
 let parametro=location.search
 
