@@ -16,7 +16,7 @@ fetch (URL_API)
     masCapacidad(eventos)
     imprimirPrimeraTabla()
     imprimirSegundaTabla(eventoUp)
-    // imprimirSegundaTabla(eventoPast)
+    imprimirSegundaTabla(eventoPast)
    
 })
 .catch(err => console.log (err))
@@ -72,34 +72,25 @@ function imprimirPrimeraTabla(){
 function imprimirSegundaTabla(array){
     let datosCompletos=[]
     let categorias=Array.from(new Set(array.map(evento=>evento.category)))
-    
     let revenues=[]
+    let ofAsistencia = []
     for (let categoria of categorias){
+        let capacidad = 0
         let total = 0
-        for (let evento of array){
-            if(evento.category == categoria){
-                total += (evento.estimate)||(evento.assistance) * evento.price
-            }
+        let estimado = 0
+        for (let evento of array){          
+               if(evento.category == categoria){                
+                total += ((evento.estimate)||(evento.assistance)) * evento.price 
+                estimado += ((evento.estimate)||(evento.assistance))
+                capacidad += evento.capacity                            
+            }            
         }
-        revenues.push(total)
-
-        let ofAsistencia = []
-        for (let categoria of categorias){
-            let estimado = 0
-            let capacidad = 0
-            for (let evento of array){
-                if(evento.category === categoria){
-                    estimado += (evento.estimate)||(evento.assistance)
-                    capacidad += evento.capacity
-                }
-            }
-            ofAsistencia.push(estimado*100/capacidad)
-        }
-        datosCompletos.push(categorias, revenues, ofAsistencia)
+        revenues.push(total)  
+        ofAsistencia.push(estimado*100/capacidad)                
+    }
+datosCompletos.push(categorias, revenues, ofAsistencia)
         console.log(datosCompletos)
-        
-}
-}
+    }
 
 
 
