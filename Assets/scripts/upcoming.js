@@ -8,11 +8,12 @@ const URL_API= 'https://mindhub-xj03.onrender.com/api/amazing'
 
 let checkCategoria
 let up
+let urlDetails="./details.html"
 fetch(URL_API)
 .then(response=> response.json())
 .then (data => {up=data.events.filter(evento=>evento.date>data.currentDate)
 checkCategoria= [...new Set (data.events.map(evento=>evento.category))]      
-printCard(up,$contCards)
+printCard(up,$contCards,urlDetails)
 printCategory(checkCategoria,$contCategoria) 
 })
 
@@ -28,7 +29,6 @@ printCard(returnCruzados,$contCards)})
 import { printCard, printCategory, filtrosCruzados } from '../modules/funciones.js'
 
 
- 
 
 
 

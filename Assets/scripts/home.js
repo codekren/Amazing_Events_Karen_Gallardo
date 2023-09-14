@@ -7,12 +7,14 @@ const URL_API= 'https://mindhub-xj03.onrender.com/api/amazing'
 
 let data
 let checkCategoria
+let urlDetails="./Assets/pages/details.html"
+
 fetch(URL_API)
 .then(response=> response.json())
 .then(({events})=> { 
     data = events  
     checkCategoria= [...new Set (data.map(evento=>evento.category))]      
-    printCard(data,$contCards)
+    printCard(data,$contCards,urlDetails)
     printCategory(checkCategoria,$contCategory)    
     }) 
 
