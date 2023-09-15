@@ -23,11 +23,11 @@ fetch(URL_API)
 
 $check.addEventListener('change', ()=>{
     const returnCruzados=filtrosCruzados(data,$search)
-    printCard(returnCruzados, $contCards)
+    printCard(returnCruzados, $contCards,urlDetails)
     })
 $contSearch.addEventListener('click',()=>{
     const returnCruzados=filtrosCruzados(data,$search)
-   printCard(returnCruzados,$contCards)})
+   printCard(returnCruzados,$contCards,urlDetails)})
 
 
 

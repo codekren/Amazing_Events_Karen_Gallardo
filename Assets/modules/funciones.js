@@ -1,14 +1,14 @@
 
 export function createCard (events,urlDetails){
     return  `<div class="col d-flex justify-content-center pt-2 pb-2"> 
-                  <div class="card text-center mb-3 border border-success p-2 mb-2 border-opacity-50" style="width: 16rem;">
+                  <div class="card text-center mb-3 border border-success p-2 mb-2 border-opacity-75" style="width: 16rem;">
                       <img src="${events.image}" class="card-img-top p-2 imgcard" alt="costume_party">
                       <div class="card-body d-flex flex-column justify-content-between">
                           <h5 class="card-title">${events.name}</h5>
                           <p class="card-text"> ${events.description}</p>
                           <div class=" d-flex justify-content-between align-items-center bg-body-secondary">
                             <p class="mb-0">$${events.price}</p>
-                            <a href="${urlDetails}?parametro=${events._id}" class="btn btn-primary">Details</a>
+                            <a href="${urlDetails}?parametro=${events._id}" class="btn btn-primary me-md">Details</a>
                           </div>  
                       </div>
                   </div>
@@ -52,7 +52,7 @@ export function filtradoCheck(data){
     if(seleccion.length>0){
         return seleccion
     }
-    else{ return data}
+    else{ return data }
 }
 
 export function filtradoSearch (data,$search) {           

@@ -15,8 +15,8 @@ fetch (URL_API)
     menorAsistencia (eventoPast)
     masCapacidad(eventos)
     imprimirPrimeraTabla()
-    imprimirSegundaTabla(eventoUp)
-    imprimirSegundaTabla(eventoPast)
+    imprimirTablas(eventoUp,"UpComing","tabla2")
+    imprimirTablas(eventoPast,"PastEvents","tabla3")
    
 })
 .catch(err => console.log (err))
@@ -63,14 +63,14 @@ function imprimirPrimeraTabla(){
     let conMasCapacidad = masCapacidad(eventos)
 
     let template= `
-    <td class="p-1">${conMayorAsistencia.name} with ${((conMayorAsistencia.assistance*100)/conMayorAsistencia.capacity).toFixed(1)}</td>
-    <td class="p-1">${conMenorAsistencia.name} with ${((conMenorAsistencia.assistance*100)/(conMenorAsistencia.capacity)).toFixed(1)}</td>
-    <td class="p-1">${conMasCapacidad.name} with ${((conMasCapacidad.capacity).toLocaleString())}</td>`
+    <td class="p-1 text-center">${conMayorAsistencia.name} with ${((conMayorAsistencia.assistance*100)/conMayorAsistencia.capacity).toFixed(1)}%</td>
+    <td class="p-1 text-center">${conMenorAsistencia.name} with ${((conMenorAsistencia.assistance*100)/(conMenorAsistencia.capacity)).toFixed(1)}%</td>
+    <td class="p-1 text-center">${conMasCapacidad.name} with ${((conMasCapacidad.capacity).toLocaleString())}</td>`
     
     document.getElementById("tabla1").innerHTML = template  
 }
-function imprimirSegundaTabla(array){
-    let datosCompletos=[]
+function imprimirTablas(array,titulo,tablas){
+    
     let categorias=Array.from(new Set(array.map(evento=>evento.category)))
     let revenues=[]
     let ofAsistencia = []
@@ -88,11 +88,31 @@ function imprimirSegundaTabla(array){
         revenues.push(total)  
         ofAsistencia.push(estimado*100/capacidad)                
     }
-datosCompletos.push(categorias, revenues, ofAsistencia)
-        console.log(datosCompletos)
+
+    let template = `
+  <tr>  
+    <th colspan="4" class="text-center text-bg-secondary p-0">${titulo} events statistics by category</th>
+  </tr>
+  <tr class="text-center">
+    <th class="p-0 ">Categories</th>
+    <th class="p-0 ">Revenues</th>
+    <th class="p-0 ">Porcentage of assistance</th>          
+  </tr>`
+        
+  for (let i = 0; i < categorias.length; i++){
+            template += ` 
+        
+        <tr class="text-center" >  
+         <td class="p-1">${categorias[i]}</td>
+         <td class="p-1">$ ${revenues[i].toLocaleString()}</td>
+         <td class="p-1">${ofAsistencia[i].toFixed(2)}%</td>
+        </tr>              
+             
+            `
+        }
+        document.getElementById(`${tablas}`).innerHTML = template
+    
     }
-
-
 
 
 

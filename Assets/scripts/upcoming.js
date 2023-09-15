@@ -13,7 +13,7 @@ let urlDetails="./details.html"
 fetch(URL_API)
 .then(response=> response.json())
 .then (data => {up=data.events.filter(evento=>evento.date>data.currentDate)
-checkCategoria= [...new Set (data.events.map(evento=>evento.category))]      
+checkCategoria= [...new Set (up.map(evento=>evento.category))]      
 printCard(up,$contCards,urlDetails)
 printCategory(checkCategoria,$contCategoria) 
 })
@@ -21,11 +21,11 @@ printCategory(checkCategoria,$contCategoria)
 .catch(err => console.log(err))
 $check.addEventListener('change',()=>{
     const returnCruzados=filtrosCruzados(up,$search)
-    printCard(returnCruzados, $contCards)
+    printCard(returnCruzados, $contCards,urlDetails)
    })
 $contSearch.addEventListener('click',()=>{
 const returnCruzados=filtrosCruzados(up,$search)
-printCard(returnCruzados,$contCards)})
+printCard(returnCruzados,$contCards,urlDetails)})
 
 
 

@@ -12,20 +12,20 @@ let urlDetails="./details.html"
 fetch(URL_API)
 .then(response=> response.json())
 .then (data => {past=data.events.filter(evento=>evento.date<data.currentDate)
-checkCategoria= [...new Set (data.events.map(evento=>evento.category))]      
+checkCategoria= [...new Set (past.map(evento=>evento.category))]      
 printCard(past,$contCards,urlDetails)
-printCategory(checkCategoria,$contCategoria) 
+printCategory(checkCategoria,$contCategoria,urlDetails) 
 })
 
 .catch(err => console.log(err))
 
 $check.addEventListener('change',()=>{
     const returnCruzados=filtrosCruzados(past,$search)
-    printCard(returnCruzados, $contCards)})
+    printCard(returnCruzados, $contCards,urlDetails)})
 
 $contSearch.addEventListener('click',()=>{
     const returnCruzados=filtrosCruzados(past,$search)
-    printCard(returnCruzados,$contCards)})
+    printCard(returnCruzados,$contCards,urlDetails)})
 
 import { printCard, printCategory, filtrosCruzados } from '../modules/funciones.js'
 
