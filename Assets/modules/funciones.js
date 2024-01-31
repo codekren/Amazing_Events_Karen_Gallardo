@@ -70,4 +70,47 @@ export function filtrosCruzados(data,$search){
 }
 
 
+export function imprimirTablas(array,titulo,tablas){
+    
+    let categorias=Array.from(new Set(array.map(evento=>evento.category)))
+    let revenues=[]
+    let ofAsistencia = []
+    for (let categoria of categorias){
+        let capacidad = 0
+        let total = 0
+        let estimado = 0
+        for (let evento of array){          
+               if(evento.category == categoria){                
+                total += ((evento.estimate)||(evento.assistance)) * evento.price 
+                estimado += ((evento.estimate)||(evento.assistance))
+                capacidad += evento.capacity                            
+            }            
+        }
+        revenues.push(total)  
+        ofAsistencia.push(estimado*100/capacidad)                
+    }
 
+    let template = `
+  <tr>  
+    <th colspan="4" class="text-center text-bg-secondary p-0">${titulo} events statistics by category</th>
+  </tr>
+  <tr class="text-center">
+    <th class="p-0 ">Categories</th>
+    <th class="p-0 ">Revenues</th>
+    <th class="p-0 ">Porcentage of assistance</th>          
+  </tr>`
+        
+  for (let i = 0; i < categorias.length; i++){
+            template += ` 
+        
+        <tr class="text-center" >  
+         <td class="p-1">${categorias[i]}</td>
+         <td class="p-1">$ ${revenues[i].toLocaleString()}</td>
+         <td class="p-1">${ofAsistencia[i].toFixed(2)}%</td>
+        </tr>              
+             
+            `
+        }
+        document.getElementById(`${tablas}`).innerHTML = template
+    
+    }

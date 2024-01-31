@@ -1,3 +1,4 @@
+import { printCard, printCategory, filtrosCruzados } from '../modules/funciones.js'
 const $contCards= document.getElementById('contCards') //html
 const $contCategoria=document.getElementById('form')
 const $check= document.getElementById('form')
@@ -27,5 +28,5 @@ $contSearch.addEventListener('click',()=>{
     const returnCruzados=filtrosCruzados(past,$search)
     printCard(returnCruzados,$contCards,urlDetails)})
 
-import { printCard, printCategory, filtrosCruzados } from '../modules/funciones.js'
+
 
